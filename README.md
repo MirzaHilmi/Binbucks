@@ -19,6 +19,10 @@ BookHaven is a digital, web-based platform library designed to streamline the pr
 
 BookHaven is built using [Saphpi](https://github.com/MirzaHilmi/Saphpi) a custom web framework built with only PHP vanilla which happens to be my own framework so check it out! The decision to avoid external libraries or package managers emphasizes the platform's independence and ease of use for potential contributors and users.
 
+## Prerequisite
+
+Note that this section is titled 'prerequisite' and not 'prerequisites.' Why? Because you only require one prerequisite, apart from Git, which is utilized to clone this repository to your local machine — and that is PHP itself. The version needed to run this web app is **PHP version 8.2** or later.
+
 ## How to Use
 
 1. **Clone the Repository:**
@@ -27,7 +31,7 @@ BookHaven is built using [Saphpi](https://github.com/MirzaHilmi/Saphpi) a custom
    ```
 
 2. **Run the Platform:**
-   - Run this command in your terminal to start the server
+   - Open the newly clone project and run this command into your terminal to start the server
    ```shell
    php moo serve
    ```

@@ -51,10 +51,10 @@ class User {
 
         unset($user->Password, $user->CreatedAt, $user->UpdatedAt);
 
-        Application::session()->set('userID', $user);
+        Application::session()->set('user', $user);
     }
 
     public static function logOut(): void {
-        Application::session()->destroy('userID');
+        Application::session()->destroy('user');
     }
 }

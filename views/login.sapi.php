@@ -9,15 +9,14 @@
 
 <div class="flex items-center justify-center">
 
-    <form method="POST" action="/signup" class="max-w-md w-full bg-white p-6 rounded-md shadow-md">
-
-        <!-- Name -->
-        <div class="mb-4">
-            <label for="name" class="text-sm font-medium text-gray-600">Name</label>
-            <input id="name" type="text" name="name" class="mt-1 p-2 w-full border rounded-md focus:outline-none focus:border-blue-500" required autofocus autocomplete="name">
-            <?php if (isset($_SESSION['flash']['errors']['value']['name'])): ?>
-            <p class="text-red-500 text-xs mt-2"><?=$_SESSION['flash']['errors']['value']['name']?></p>
-            <?php endif;?>
+    <form method="POST" action="/login" class="max-w-md w-full bg-white p-6 rounded-md shadow-md">
+        <div class="my-2 text-center">
+        <h2>
+            Welcome Back !
+        </h2>
+        <h3 class="text-[#ABABAB]">
+            Log in to continue to your Digital Library
+        </h3>
         </div>
 
         <!-- Email Address -->
@@ -38,23 +37,14 @@
             <?php endif;?>
         </div>
 
-        <!-- Confirm Password -->
-        <div class="mb-4">
-            <label for="passwordConfirmation" class="text-sm">Confirm Password</label>
-            <input id="passwordConfirmation" type="password" name="passwordConfirmation" class="mt-1 p-2 w-full border rounded-md focus:outline-none focus:border-blue-500" required autocomplete="new-password">
-            <?php if (isset($_SESSION['flash']['errors']['value']['passwordConfirmation'])): ?>
-            <p class="text-red-500 text-xs mt-2"><?=$_SESSION['flash']['errors']['value']['passwordConfirmation']?></p>
-            <?php endif;?>
-        </div>
-
         <button type="submit" class="w-full flex justify-center my-4 py-4 bg-[#042558] text-white rounded-md focus:outline-none focus:shadow-outline-blue">
-            Sign Up
+            Log In
         </button>
 
         <div class="flex items-center text-gray-600 justify-between mt-4">
             <div class="flex flex-row">
-                <a href="/login" class="underline text-sm hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                    Already registered?
+                <a href="/signup" class="underline text-sm hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                    New user? register here!
                 </a>
             </div>
             <a href="/" class="underline text-sm hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">

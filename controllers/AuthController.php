@@ -9,7 +9,7 @@ use Saphpi\Middlewares\GuestOnly;
 
 class AuthController extends Controller {
     public function __construct() {
-        $this->registerMiddlewares(new GuestOnly(['signUp', 'handleSignUp']));
+        $this->registerMiddlewares(new GuestOnly(['signUp', 'handleSignUp', 'logIn', 'handleLogIn']));
     }
 
     public function signUp(): string {
@@ -45,6 +45,41 @@ class AuthController extends Controller {
             $this->redirect('/signup');
             return;
         }
+
+        $this->redirect('/');
+    }
+
+    public function logIn(): string {
+        return $this->render('layouts/guest>login', title: 'BookHaven | Log In');
+    }
+
+    public function handleLogIn(Request $request): void {
+        $data = Validator::validate($request->getBody(), [
+            'email'    => ['Required'],
+            'password' => ['Required'],
+        ]);
+
+        if (isset($data['errors'])) {
+            $this->response->withFlash($data['errors'], 'errors');
+            $this->redirect('/login');
+            return;
+        }
+
+        $payload = $data['validated'];
+
+        try {
+            User::logIn($payload['email'], $payload['password']);
+        } catch (\Throwable $th) {
+            $this->response->withFlash($th->getMessage());
+            $this->redirect('/login');
+            return;
+        }
+
+        $this->redirect('/');
+    }
+
+    public function handleLogOut(): void {
+        User::logOut();
 
         $this->redirect('/');
     }

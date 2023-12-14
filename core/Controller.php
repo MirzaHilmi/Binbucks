@@ -7,7 +7,7 @@ abstract class Controller {
 
     protected Response $response;
 
-    protected function render(string $name, array $props = [], string $title): string {
+    protected function render(string $name, array $props = [], string $title = 'Page'): string {
         return Application::view()->renderView($name, $props, $title);
     }
 

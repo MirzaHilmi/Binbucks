@@ -1,0 +1,8 @@
+CREATE TABLE Authors
+(
+    ID INT PRIMARY KEY AUTO_INCREMENT,
+    Name VARCHAR(255),
+    Biography TEXT,
+    CreatedAt DATETIME DEFAULT (NOW()),
+    UpdatedAt DATETIME DEFAULT (NOW())
+);

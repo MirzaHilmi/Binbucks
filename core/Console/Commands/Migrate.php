@@ -3,7 +3,7 @@ namespace Saphpi\Core\Console\Commands;
 
 use Exception;
 use RuntimeException;
-use Saphpi\Core\Application;
+use Saphpi\Core\MySQL;
 use Saphpi\Core\Console\Command;
 
 class Migrate extends Command {
@@ -11,9 +11,7 @@ class Migrate extends Command {
     private array $downs;
 
     public function handle(): void {
-        $this->bindScriptNames(Application::$ROOT_DIR . '/migrations');
-
-        Application::db()->establishConnection();
+        $this->bindScriptNames(ROOT . '/migrations');
 
         if (in_array('--down', $this->flags, true)) {
             if (!empty($this->args)) {
@@ -22,7 +20,6 @@ class Migrate extends Command {
                 $this->drop();
             }
 
-            Application::db()->closeConnection();
             return;
         }
 
@@ -31,7 +28,6 @@ class Migrate extends Command {
         }
 
         $this->up($this->args);
-        Application::db()->closeConnection();
     }
 
     private function up(array $migrations = []) {
@@ -46,7 +42,7 @@ class Migrate extends Command {
         foreach ($this->migrations as $name => $path) {
             print "Migrating {$name}..." . PHP_EOL;
             $script = $this->readScript($path);
-            Application::db()->conn()->exec($script);
+            MySQL::db()->execute_query($script);
         }
         print 'Migration finished...' . PHP_EOL;
     }
@@ -61,7 +57,7 @@ class Migrate extends Command {
         foreach ($this->downs as $name => $path) {
             print "Dropping {$name}..." . PHP_EOL;
             $script = $this->readScript($path);
-            Application::db()->conn()->exec($script);
+            MySQL::db()->execute_query($script);
         }
 
         print 'Finished dropping tables...' . PHP_EOL;

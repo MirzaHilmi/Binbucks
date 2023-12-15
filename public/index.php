@@ -3,6 +3,7 @@
 use Saphpi\Core\MySQL;
 use Saphpi\Core\Application;
 use Saphpi\Controllers\AuthController;
+use Saphpi\Controllers\GuestController;
 
 require_once __DIR__ . '/../psr4_autoloader.php';
 
@@ -27,5 +28,7 @@ $app->router()->post('/signup', [AuthController::class, 'handleSignUp']);
 $app->router()->get('/login', [AuthController::class, 'logIn']);
 $app->router()->post('/login', [AuthController::class, 'handleLogIn']);
 $app->router()->get('/logout', [AuthController::class, 'handleLogOut']);
+
+$app->router()->get('/', [GuestController::class, 'homepage']);
 
 $app->run();

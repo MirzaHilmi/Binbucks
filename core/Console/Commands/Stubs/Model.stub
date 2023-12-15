@@ -1,4 +1,4 @@
 <?php
 namespace Saphpi\Models;
 
-class %s extends {}
+class %s {}

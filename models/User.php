@@ -1,7 +1,6 @@
 <?php
 namespace Saphpi\Models;
 
-use Exception;
 use Saphpi\Core\MySQL;
 use Saphpi\Core\Application;
 
@@ -42,11 +41,11 @@ class User {
 
         $user = $stmt->get_result()->fetch_object(User::class);
         if ($user === null) {
-            throw new Exception('User not found');
+            throw new \Exception('User not found');
         }
 
         if (!password_verify($password, $user->Password)) {
-            throw new Exception('Password does not match');
+            throw new \Exception('Password does not match');
         }
 
         unset($user->Password, $user->CreatedAt, $user->UpdatedAt);

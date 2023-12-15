@@ -9,6 +9,7 @@
   </title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="/scripts/jquery-3.7.1.min.js.js"></script>
+  <script src="/scripts/timer.js"></script>
   <link rel="preconnect" href="https://fonts.bunny.net">
   <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 </head>

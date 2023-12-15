@@ -16,6 +16,7 @@ CREATE TABLE Books
     HardCopy BOOLEAN,
     EBook BOOLEAN,
     AudioBook BOOLEAN,
+	Views INT DEFAULT 0,
     Borrowed BOOLEAN,
     Bookshelf VARCHAR(255),
     CreatedAt DATETIME DEFAULT (NOW()),

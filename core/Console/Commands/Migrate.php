@@ -42,7 +42,8 @@ class Migrate extends Command {
         foreach ($this->migrations as $name => $path) {
             print "Migrating {$name}..." . PHP_EOL;
             $script = $this->readScript($path);
-            MySQL::db()->execute_query($script);
+            MySQL::db()->multi_query($script);
+            while (MySQL::db()->next_result());
         }
         print 'Migration finished...' . PHP_EOL;
     }
@@ -57,7 +58,8 @@ class Migrate extends Command {
         foreach ($this->downs as $name => $path) {
             print "Dropping {$name}..." . PHP_EOL;
             $script = $this->readScript($path);
-            MySQL::db()->execute_query($script);
+            MySQL::db()->multi_query($script);
+            while (MySQL::db()->next_result());
         }
 
         print 'Finished dropping tables...' . PHP_EOL;

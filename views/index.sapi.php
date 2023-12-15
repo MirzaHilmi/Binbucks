@@ -13,7 +13,7 @@
         </div>
         <div class="flex h-40 flex-row items-center justify-between gap-4">
           <?php foreach ($recommendations as $recommended): ?>
-          <a href="/book/id=<?=$recommended->ID?>" class="my-4 flex h-24 w-full items-center justify-center md:h-40 md:w-32">
+          <a href="/buku?id=<?=$recommended->ID?>" class="my-4 flex h-24 w-full items-center justify-center md:h-40 md:w-32">
             <img src="<?=$recommended->CoverURL?>" alt="Image" class="h-40 w-32 object-fill" />
           </a>
           <?php endforeach;?>
@@ -24,7 +24,7 @@
       <h2 class="text-2xl font-bold text-[#243F65]">Koleksi Buku</h2>
       <div class="grid w-full grid-cols-2 gap-8 sm:grid-cols-4 md:grid-cols-5">
         <?php foreach ($books as $book): ?>
-        <a href="/book/<?=$book->ID?>" class="flex flex-col items-center duration-200 hover:scale-105">
+        <a href="/buku?id=<?=$book->ID?>" class="flex flex-col items-center duration-200 hover:scale-105">
           <img src="<?=$book->CoverURL?>" alt="Image" class="h-52 w-full object-fill shadow-md" />
           <div class="flex w-full flex-col">
             <h3><?=$book->Title?></h3>

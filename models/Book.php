@@ -67,6 +67,30 @@ class Book {
         return $book;
     }
 
+    /** @return Book[] */
+    public static function fetchByKeyword(string $keyword): array {
+        $query = '
+        SELECT Books.*, Authors.Name AS Author
+        FROM Books
+        INNER JOIN Authors
+        ON Books.AuthorID = Authors.ID
+        WHERE Books.Title LIKE ?';
+
+        $stmt = MySQL::db()->prepare($query);
+        $keyword = "%{$keyword}%";
+        $stmt->bind_param('s', $keyword);
+        $stmt->execute();
+
+        $result = $stmt->get_result();
+
+        $books = [];
+        while ($book = $result->fetch_object(Book::class)) {
+            $books[] = $book;
+        }
+
+        return $books;
+    }
+
     public static function getBorrowedTimes(int $id): int {
         $query = '
         SELECT COUNT(*) AS BorrowedTimes

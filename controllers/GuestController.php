@@ -8,7 +8,7 @@ class GuestController extends Controller {
     public function homepage(): string {
         return $this->render('layouts/app>index', [
             'recommendations' => Book::fetchPartial(7),
-            'books'           => Book::fetchPartial(60),
+            'books'           => Book::fetchPartial(35),
         ], 'BookHaven');
     }
 }

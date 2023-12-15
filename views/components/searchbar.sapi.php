@@ -6,7 +6,7 @@
     </div>
     <form action="/buku" class="flex-1">
 
-      <input type="text" name="query" class="flex w-full flexs-1 border-0 bg-transparent outline-none focus:border-0 focus:outline-none" placeholder="Pencarian">
+      <input type="text" name="query" value="<?=$_GET['query'] ? $_GET['query'] : ''?>" class="flex w-full flexs-1 border-0 bg-transparent outline-none focus:border-0 focus:outline-none" placeholder="Pencarian">
 
     </form>
     <img src="/assets/Search.svg" alt="Image" class="mr-4" />

@@ -31,6 +31,6 @@ $app->router()->post('/login', [AuthController::class, 'handleLogIn']);
 $app->router()->get('/logout', [AuthController::class, 'handleLogOut']);
 
 $app->router()->get('/', [GuestController::class, 'homepage']);
-$app->router()->get('/book', [BookController::class, 'index']);
+$app->router()->get('/buku', [BookController::class, 'index']);
 
 $app->run();

@@ -118,4 +118,63 @@ class Book {
         $stmt->bind_param('i', $id);
         $stmt->execute();
     }
+
+    public static function store(array $properties): void {
+        $query = '
+        INSERT INTO Authors (Name, Biography)
+        VALUE (?, ?)';
+
+        $stmt = MySQL::db()->prepare($query);
+        $stmt->bind_param('ss', $properties['authorName'], $properties['authorBio']);
+        $stmt->execute();
+        $authorID = $stmt->insert_id;
+
+        $stmt->close();
+
+        $query = '
+        INSERT INTO Books (
+            AuthorID,
+            Title,
+            ISBN,
+            CoverURL,
+            ReleaseYear,
+            Publisher,
+            PublisherOrigin,
+            Edition,
+            Language,
+            Pages,
+            Bookshelf,
+            Synopsis,
+            HardCopy,
+            EBook,
+            AudioBook
+        )
+        VALUE (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
+
+        $stmt = MySQL::db()->prepare($query);
+
+        $properties['hardCopy'] ??= false;
+        $properties['eBook'] ??= false;
+        $properties['AudioBook'] ??= false;
+
+        $stmt->bind_param(
+            'issssssssissiii',
+            $authorID,
+            $properties['title'],
+            $properties['isbn'],
+            $properties['coverURL'],
+            $properties['releaseYear'],
+            $properties['publisher'],
+            $properties['publisherOrigin'],
+            $properties['edition'],
+            $properties['language'],
+            $properties['pages'],
+            $properties['bookshelf'],
+            $properties['synopsis'],
+            $properties['hardCopy'],
+            $properties['eBook'],
+            $properties['AudioBook'],
+        );
+        $stmt->execute();
+    }
 }

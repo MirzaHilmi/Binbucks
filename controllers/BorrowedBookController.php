@@ -6,8 +6,12 @@ use Saphpi\Core\Request;
 use Saphpi\Core\Validator;
 use Saphpi\Core\Controller;
 use Saphpi\Models\BorrowedBook;
+use Saphpi\Middlewares\Authenticated;
 
 class BorrowedBookController extends Controller {
+    public function __construct() {
+        $this->registerMiddlewares(new Authenticated(['borrow', 'handleBorrow']));
+    }
 
     public function borrow(): string {
         return $this->render('layouts/app>books/borrow', ['books' => Book::fetchPartial(40)], 'BookHaven | Pinjam');

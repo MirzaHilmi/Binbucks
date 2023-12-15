@@ -20,9 +20,9 @@
         <h3>Semua</h3>
 
       </div>
-      <form action="daftar-buku?" class="flex-1">
+      <form action="/buku" class="flex-1">
 
-        <input type="text" name="search_query" class="flex w-full flex-1 border-0 bg-transparent outline-none focus:border-0 focus:outline-none" placeholder="Pencarian">
+        <input type="text" name="query" class="flex w-full flexs-1 border-0 bg-transparent outline-none focus:border-0 focus:outline-none" placeholder="Pencarian">
 
       </form>
       <img src="/assets/Search.svg" alt="Image" class="mr-4" />
@@ -46,10 +46,10 @@
       </div>
       <div class="flex h-48 w-full flex-row items-center gap-4 overflow-hidden rounded-lg md:w-[70%]">
         <div style="writing-mode: vertical-lr;" class="flex h-full w-12 items-center justify-center bg-[#799AC3] text-white">
-          <h3 class="rotate-180 text-center">Buku Rekomendasi</h3>
+          <h3 class="rotate-180 text-center">Rekomendasi</h3>
         </div>
         <div class="flex h-40 flex-row items-center justify-between gap-4">
-          <?php foreach ($recomemndations as $recommended): ?>
+          <?php foreach ($recommendations as $recommended): ?>
           <a href="/book/id=<?=$recommended->ID?>" class="my-4 flex h-24 w-full items-center justify-center md:h-40 md:w-32">
             <img src="<?=$recommended->CoverURL?>" alt="Image" class="h-40 w-32 object-fill" />
           </a>

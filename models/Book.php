@@ -27,8 +27,8 @@ class Book {
     public \DateTime $UpdatedAt;
 
     /** @return Book[] */
-    public static function fetchPartial(): array {
-        $query = 'SELECT Books.*, Authors.Name AS Author FROM Books INNER JOIN Authors ON Books.AuthorID = Authors.ID LIMIT 50';
+    public static function fetchPartial(int $amount): array {
+        $query = "SELECT Books.*, Authors.Name AS Author FROM Books INNER JOIN Authors ON Books.AuthorID = Authors.ID ORDER BY RAND() LIMIT {$amount}";
         $result = MySQL::db()->query($query);
 
         $books = [];

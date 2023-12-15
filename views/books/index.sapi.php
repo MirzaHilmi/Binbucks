@@ -1,6 +1,6 @@
 <body>
     <?php if (isset($_SESSION['flash']['message']['value'])): ?>
-    <div onclick="return this.remove();" class="absolute top-4 right-4 flex items-center justify-between p-5 leading-normal text-blue-600 bg-blue-100 rounded-lg" role="alert">
+    <div onclick="return this.remove();" class="absolute top-4 right-4 z-50 flex items-center justify-between p-5 leading-normal text-blue-600 bg-blue-100 rounded-lg" role="alert">
         <p>
             <?=$_SESSION['flash']['message']['value']?>
         </p>

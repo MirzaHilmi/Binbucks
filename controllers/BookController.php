@@ -16,7 +16,7 @@ class BookController extends Controller {
             $books = Book::fetchPartial(80);
         }
 
-        return $this->render('layouts/app>books/index', ['books' => $books]);
+        return $this->render('layouts/app>books/index', ['books' => $books], 'BookHaven | Daftar Buku');
     }
 
     public function details(int $id): string {
@@ -26,6 +26,6 @@ class BookController extends Controller {
             'book'          => Book::fetchByID($id),
             'borrowedTimes' => Book::getBorrowedTimes($id),
             'randoms'       => Book::fetchPartial(7),
-        ]);
+        ], 'BookHaven | Buku');
     }
 }

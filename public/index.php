@@ -5,6 +5,7 @@ use Saphpi\Core\Application;
 use Saphpi\Controllers\AuthController;
 use Saphpi\Controllers\BookController;
 use Saphpi\Controllers\GuestController;
+use Saphpi\Controllers\BorrowedBookController;
 
 require_once __DIR__ . '/../psr4_autoloader.php';
 
@@ -32,5 +33,7 @@ $app->router()->get('/logout', [AuthController::class, 'handleLogOut']);
 
 $app->router()->get('/', [GuestController::class, 'homepage']);
 $app->router()->get('/buku', [BookController::class, 'index']);
+$app->router()->get('/buku/pinjam', [BorrowedBookController::class, 'borrow']);
+$app->router()->post('/buku/pinjam', [BorrowedBookController::class, 'handleBorrow']);
 
 $app->run();

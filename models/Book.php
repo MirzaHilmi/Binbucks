@@ -24,8 +24,6 @@ class Book {
     public int $Views;
     public bool $Borrowed;
     public string $Bookshelf;
-    public string $CreatedAt;
-    public string $UpdatedAt;
 
     /** @return Book[] */
     public static function fetchPartial(int $amount): array {

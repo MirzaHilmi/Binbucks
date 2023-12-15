@@ -11,7 +11,7 @@ class MySQL {
         string $password,
         string $schema
     ) {
-        mysqli_report(MYSQLI_REPORT_STRICT | MYSQLI_REPORT_ERROR);
+        mysqli_report(MYSQLI_REPORT_ERROR);
 
         self::$db = new \mysqli($host, $username, $password, $schema, $port);
         if (self::$db->connect_errno) {

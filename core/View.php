@@ -12,7 +12,7 @@ class View {
         if ($suppress) {
             return $this->renderView("errors/{$codeStr}xx");
         }
-        return $this->renderView("layouts/default>errors/{$codeStr}xx", [
+        return $this->renderView("app>errors/{$codeStr}xx", [
             'code'    => $code,
             'message' => $e->getMessage(),
         ], 'Ooops.. there\'s something wrong');

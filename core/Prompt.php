@@ -30,16 +30,3 @@ class Prompt {
         $command->handle();
     }
 }
-
-$env = parse_ini_file(ROOT . '/.env');
-if ($env === false) {
-    die('Failed to load .env file');
-}
-
-new MySQL(
-    $env['DB_HOST'],
-    $env['DB_PORT'],
-    $env['DB_USERNAME'],
-    $env['DB_PASSWORD'],
-    $env['DB_SCHEMA']
-);

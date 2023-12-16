@@ -98,5 +98,5 @@ class BookController extends Controller {
 
         $this->response->withFlash('Book deleted successfuly');
         $this->redirect('/buku');
-    }
+    }
 }

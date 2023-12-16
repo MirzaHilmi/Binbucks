@@ -44,6 +44,25 @@ class Book {
         return $books;
     }
 
+    /** @return Book[] */
+    public static function reccomendationFetch(int $amount): array {
+        $query = "
+        SELECT Books.*, Authors.Name AS Author
+        FROM Books
+        INNER JOIN Authors
+        ON Books.AuthorID = Authors.ID
+        ORDER BY Views DESC LIMIT {$amount}";
+
+        $result = MySQL::db()->query($query);
+
+        $books = [];
+        while ($book = $result->fetch_object()) {
+            $books[] = $book;
+        }
+
+        return $books;
+    }
+
     public static function fetchByID(int $id): Book {
         $query = '
         SELECT Books.*, Authors.Name AS Author, Authors.Biography AS AuthorBio

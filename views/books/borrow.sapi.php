@@ -1,6 +1,6 @@
 <body>
   <script defer src="/scripts/borrow-modal.js"></script>
- 
+
   <?php if (isset($_SESSION['flash']['message']['value'])): ?>
   <div onclick="return this.remove();" class="absolute top-4 right-4 z-50 flex items-center justify-between p-5 leading-normal text-blue-600 bg-blue-100 rounded-lg" role="alert">
     <p>
@@ -11,14 +11,14 @@
     </svg>
   </div>
   <?php endif;?>
- 
+
   <?php use Saphpi\Core\Application;require Application::$ROOT_DIR . '/views/components/searchbar.sapi.php'?>
- 
+
   <div class="w-full pt-24 pl-0 md:pl-[20%]">
     <table class="w-full table-fixed border-separate border-spacing-y-2 border-spacing-x-2 px-2 text-xs md:border-spacing-x-4 md:px-4 md:text-sm lg:text-base">
       <thead class="text-left">
         <tr class="">
-          <th class="w-[10%]">Cover</th>
+          <th class="w-[10%]">Gambar</th>
           <th class="w-[25%] md:w-[35%]">Judul</th>
           <th class="w-[35%]">Sinopsis</th>
           <th class="w-[15%]">Status</th>
@@ -26,7 +26,7 @@
         </tr>
       </thead>
       <tbody>
- 
+
         <?php foreach ($books as $book): ?>
         <tr>
           <td>
@@ -60,15 +60,15 @@
               Pinjam
             </button>
             <?php endif;?>
- 
+
           </td>
         </tr>
         <?php endforeach;?>
       </tbody>
     </table>
- 
+
     <div id="modal-overlay" class="hidden fixed top-0 right-0 bottom-0 left-0 bg-slate-800 opacity-50 z-40"></div>
- 
+
     <!-- Main modal -->
     <div id="modal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
       <div class="relative p-4 w-full max-w-md max-h-full top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
@@ -86,7 +86,7 @@
             </button>
           </div>
           <!-- Modal body -->
-          <form action="/buku/pinjam" method="POST" class="p-4 md:p-5">
+          <form action="/buku/peminjaman" method="POST" class="p-4 md:p-5">
             <input type="hidden" name="bookID" id="book-id">
             <div class="grid gap-4 mb-6 grid-cols-2">
               <div class="col-span-2">
@@ -116,6 +116,6 @@
         </div>
       </div>
     </div>
- 
+
   </div>
 </body>

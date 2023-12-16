@@ -75,7 +75,7 @@ class BookController extends Controller {
         $this->redirect('/buku/simpan');
     }
 
-    private static function storePicture(string $fieldName): string {
+    private function storePicture(string $fieldName): string {
         if (getimagesize($_FILES[$fieldName]['tmp_name']) === false) {
             throw new \Exception('Upload file is not a valid image');
         } elseif ($_FILES[$fieldName]['size'] > 500000) {

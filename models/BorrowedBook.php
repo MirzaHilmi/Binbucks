@@ -40,16 +40,19 @@ class BorrowedBook {
     }
 
     public static function returnBook(string $isbn, string $borrower) {
-        $query = 'SELECT ID FROM Books WHERE ISBN = ? LIMIT 1';
+        $query = 'SELECT ID, Borrowed FROM Books WHERE ISBN = ? LIMIT 1';
         $stmt = MySQL::db()->prepare($query);
         $stmt->bind_param('s', $isbn);
         $stmt->execute();
 
         $book = $stmt->get_result()->fetch_assoc();
+        $stmt->close();
+
         if ($book === null) {
             throw new \Exception('Book Not Found');
+        } elseif ($book['Borrowed'] == 0) {
+            throw new \Exception('That book isn\'t currenly borrowed by anyone');
         }
-        $stmt->close();
 
         $query = '
         UPDATE BorrowedBooks
@@ -63,7 +66,8 @@ class BorrowedBook {
         )';
 
         $stmt = MySQL::db()->prepare($query);
-        $stmt->bind_param('sisi', date('Y-m-d'), $book['ID'], $borrower);
+        $now = date('Y-m-d');
+        $stmt->bind_param('sis', $now, $book['ID'], $borrower);
         $stmt->execute();
         $stmt->close();
 

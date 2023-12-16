@@ -22,7 +22,7 @@
         <img src="/assets/gift.svg" alt="Image" class="w-4" />
         Peminjaman Buku
       </a>
-      <a class="flex w-full flex-row items-center gap-4" href="/buku/kembali">
+      <a class="flex w-full flex-row items-center gap-4" href="/buku/pengembalian">
         <img src="/assets/gift.svg" alt="Image" class="w-4" />
         Pengembalian Buku
       </a>

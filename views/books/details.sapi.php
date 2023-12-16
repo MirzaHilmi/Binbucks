@@ -69,7 +69,7 @@
             </button>
 
             <?php if (isset($_SESSION['user'])): ?>
-            <form action="/book" style="display: inline;">
+            <form action="/buku" method="POST" style="display: inline;">
               <input type="hidden" name="_method" value="DELETE" />
               <input type="text" name="id" id="id" class="hidden" value="<?=$book->ID?>">
               <button type="submit" class="flex h-full flex-col items-center justify-between text-sm font-bold">
@@ -89,7 +89,7 @@
             <h2 class="font-bold text-slate-800">Buku Lainnya</h2>
             <div class="flex flex-row gap-4">
               <?php foreach ($randoms as $randomBook): ?>
-              <a href="/book?id=<?=$randomBook->ID?>" class="flex items-center justify-center">
+              <a href="/buku?id=<?=$randomBook->ID?>" class="flex items-center justify-center">
                 <img src="<?=$randomBook->CoverURL?>" alt="Image" class="h-24" />
               </a>
               <?php endforeach;?>

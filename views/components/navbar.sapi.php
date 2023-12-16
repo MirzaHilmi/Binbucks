@@ -1,4 +1,4 @@
-<nav :class="{ 'flex': open, 'hidden': !open }" class="fixed z-20 h-screen w-[80%] flex-col items-center justify-between gap-4 border-b border-gray-100 bg-[#C2E8FF] p-4 md:flex md:w-[20%]">
+<nav class="fixed z-20 h-screen w-[80%] flex-col items-center justify-between gap-4 border-b border-gray-100 bg-[#C2E8FF] p-4 md:flex md:w-[20%]">
   <div class="flex w-full flex-col">
 
     <div class="flex flex-col items-center gap-4 px-8 md:px-2">
@@ -14,6 +14,10 @@
         Daftar Buku
       </a>
       <?php if (isset($_SESSION['user'])): ?>
+        <a class="flex w-full flex-row items-center gap-4" href="/buku/simpan">
+          <img src="/assets/save.svg" alt="Image" class="w-4" />
+          Simpan Buku
+        </a>
       <a class="flex w-full flex-row items-center gap-4" href="/buku/pinjam">
         <img src="/assets/gift.svg" alt="Image" class="w-4" />
         Peminjaman Buku

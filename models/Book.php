@@ -177,4 +177,12 @@ class Book {
         );
         $stmt->execute();
     }
+
+    public static function delete(int $id): void {
+        $query = 'DELETE FROM Books WHERE ID = ?';
+
+        $stmt = MySQL::db()->prepare($query);
+        $stmt->bind_param('i', $id);
+        $stmt->execute();
+    }
 }

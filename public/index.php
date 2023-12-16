@@ -33,6 +33,7 @@ $app->router()->get('/logout', [AuthController::class, 'handleLogOut']);
 
 $app->router()->get('/', [GuestController::class, 'homepage']);
 $app->router()->get('/buku', [BookController::class, 'index']);
+$app->router()->delete('/buku', [BookController::class, 'delete']);
 $app->router()->get('/buku/pinjam', [BorrowedBookController::class, 'borrow']);
 $app->router()->post('/buku/pinjam', [BorrowedBookController::class, 'handleBorrow']);
 $app->router()->get('/buku/simpan', [BookController::class, 'create']);

@@ -90,4 +90,13 @@ class BookController extends Controller {
 
         return "/runtime/{$fileName}";
     }
+
+    public function delete(Request $request): void {
+        $payload = $request->getBody();
+
+        Book::delete($payload['id']);
+
+        $this->response->withFlash('Book deleted successfuly');
+        $this->redirect('/buku');
+    }
 }

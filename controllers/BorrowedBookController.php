@@ -10,7 +10,7 @@ use Saphpi\Middlewares\Authenticated;
 
 class BorrowedBookController extends Controller {
     public function __construct() {
-        $this->registerMiddlewares(new Authenticated(['borrow', 'handleBorrow']));
+        $this->registerMiddlewares(new Authenticated());
     }
 
     public function borrow(): string {
@@ -57,5 +57,35 @@ class BorrowedBookController extends Controller {
 
         $this->response->withFlash('Berhasil meminjam buku');
         $this->redirect('/buku/pinjam');
+    }
+
+    public function returnBook(): string {
+        return $this->render('layouts/app>books/return', title: 'BookHaven | Pengembalian');
+    }
+
+    public function handleReturnBook(Request $request): void {
+        $data = Validator::validate($request->getBody(), [
+            'isbn'         => ['Required'],
+            'borrowerName' => ['Required'],
+        ]);
+
+        if (isset($data['errors'])) {
+            $this->response->withFlash('Semua input data formulir harus diisi');
+            $this->redirect('/buku/pengembalian');
+            return;
+        }
+
+        $payload = $data['validated'];
+
+        try {
+            BorrowedBook::returnBook($payload['isbn'], $payload['borrowerName']);
+        } catch (\Throwable $th) {
+            $this->response->withFlash($th->getMessage());
+            $this->redirect('/buku/pengembalian');
+            return;
+        }
+
+        $this->response->withFlash('Berhasil mengembalikan buku');
+        $this->redirect('/buku/pengembalian');
     }
 }

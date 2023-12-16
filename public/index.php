@@ -36,8 +36,8 @@ $app->router()->get('/buku', [BookController::class, 'index']);
 $app->router()->delete('/buku', [BookController::class, 'delete']);
 $app->router()->get('/buku/simpan', [BookController::class, 'create']);
 $app->router()->post('/buku/simpan', [BookController::class, 'handleCreate']);
-$app->router()->get('/buku/pinjam', [BorrowedBookController::class, 'borrow']);
-$app->router()->post('/buku/pinjam', [BorrowedBookController::class, 'handleBorrow']);
+$app->router()->get('/buku/peminjaman', [BorrowedBookController::class, 'borrow']);
+$app->router()->post('/buku/peminjaman', [BorrowedBookController::class, 'handleBorrow']);
 $app->router()->get('/buku/pengembalian', [BorrowedBookController::class, 'returnBook']);
 $app->router()->patch('/buku/pengembalian', [BorrowedBookController::class, 'handleReturnBook']);
 

@@ -16,10 +16,11 @@
         <table class="w-full table-fixed border-separate border-spacing-y-2 border-spacing-x-2 px-2 text-xs md:border-spacing-x-4 md:px-4 md:text-base">
             <thead class="text-left">
                 <tr class="">
-                    <th class="w-[15%]">Cover</th>
-                    <th class="w-[20%] md:w-[35%]">Title</th>
+                    <th class="w-[10%]">Gambar</th>
+                    <th class="w-[25%] md:w-[35%]">Judul</th>
+                    <th class="w-[35%]">Sinopsis</th>
                     <th class="w-[15%]">Status</th>
-                    <th class="w-[15%]">Edit</th>
+                    <th class="w-[15%]">Aksi</th>
                 </tr>
             </thead>
             <tbody>
@@ -36,10 +37,12 @@
                         </div>
                     </td>
                     <td>
+                        <p class="text-xs"><?=$book->Synopsis?></p>
+                    </td>
+                    <td>
                         <div class="flex flex-col gap-2">
-                            <h3 class="<?=$book->Borrowed ? 'bg-[#7B9CC5]' : 'bg-[#052355]'?> rounded-md py-1 px-1 text-center text-white md:px-2">
-                                <?=$book->Borrowed ? 'Tidak Tersedia' : 'Tersedia'?></h3>
-                            <div class="<?=$book->Borrowed ? 'hidden' : 'flex'?> flex-row items-center text-sm">
+                            <h3 class="rounded-md <?=$book->Borrowed ? 'border border-[#052355] text-[#052355]' : 'bg-[#052355] text-white'?> py-1 px-1 text-center md:px-2"><?=$book->Borrowed ? 'Tidak Tersedia' : 'Tersedia'?></h3>
+                            <div class="flex flex-row items-center text-sm">
                                 <img src="/assets/map-pin.svg" alt="Image" />
                                 <span>
                                     <?=$book->Bookshelf?>

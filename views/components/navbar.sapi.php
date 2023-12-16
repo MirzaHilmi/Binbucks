@@ -18,17 +18,13 @@
           <img src="/assets/save.svg" alt="Image" class="w-4" />
           Simpan Buku
         </a>
-      <a class="flex w-full flex-row items-center gap-4" href="/buku/pinjam">
+      <a class="flex w-full flex-row items-center gap-4" href="/buku/peminjaman">
         <img src="/assets/gift.svg" alt="Image" class="w-4" />
         Peminjaman Buku
       </a>
       <a class="flex w-full flex-row items-center gap-4" href="/buku/pengembalian">
         <img src="/assets/gift.svg" alt="Image" class="w-4" />
         Pengembalian Buku
-      </a>
-      <a class="flex w-full flex-row items-center gap-4" href="/buku/riwayat">
-        <img src="/assets/riwayat.svg" alt="Image" class="w-4" />
-        Riwayat
       </a>
       <?php endif;?>
     </div>

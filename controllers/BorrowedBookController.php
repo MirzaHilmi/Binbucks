@@ -28,7 +28,7 @@ class BorrowedBookController extends Controller {
 
         if (isset($data['errors'])) {
             $this->response->withFlash('Semua input data formulir harus diisi');
-            $this->redirect('/buku/pinjam');
+            $this->redirect('/buku/peminjaman');
             return;
         }
 
@@ -36,7 +36,7 @@ class BorrowedBookController extends Controller {
 
         if ($payload['borrowedDate'] >= $payload['dueDate']) {
             $this->response->withFlash('Tanggal pinjam tidak bisa lebih dari tanggal kembali');
-            $this->redirect('/buku/pinjam');
+            $this->redirect('/buku/peminjaman');
             return;
         }
 
@@ -51,12 +51,12 @@ class BorrowedBookController extends Controller {
             BorrowedBook::borrow($borrowedBook);
         } catch (\Throwable $th) {
             $this->response->withFlash($th->getMessage());
-            $this->redirect('/buku/pinjam');
+            $this->redirect('/buku/peminjaman');
             return;
         }
 
         $this->response->withFlash('Berhasil meminjam buku');
-        $this->redirect('/buku/pinjam');
+        $this->redirect('/buku/peminjaman');
     }
 
     public function returnBook(): string {

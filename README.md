@@ -38,7 +38,11 @@ Note that this section is titled 'prerequisite' and not 'prerequisites.' Why? Be
    ```
 
 3. **Run the Project:**
-   - Open the newly clone project and run this command into your terminal to start the server
+   - Open the newly clone project and run the migrations file to populate the database schema
+   ```shell
+   php moo migrate
+   ```
+   - Run serve command to start the server
    ```shell
    php moo serve
    ```

@@ -1,7 +1,6 @@
-<img src="public/assets/logo1.png" alt="BookHaven Logo" width="500" />  
+<img src="public/assets/logo1.png" alt="BookHaven" width="500" />  
   
-
-# BookHaven
+---
 
 BookHaven is a digital, web-based platform library designed to streamline the process of managing and tracking books in a physical library. This platform serves as a powerful tool for librarians worldwide, allowing them to efficiently organize their book inventory, track book availability, and manage borrower information. BookHaven is built entirely from scratch using a custom web framework developed exclusively with PHP vanilla, without relying on any external libraries or package managers. Its simplicity and independence make it accessible for anyone looking to enhance their library management system.
 
@@ -30,17 +29,21 @@ Note that this section is titled 'prerequisite' and not 'prerequisites.' Why? Be
    git clone https://github.com/MirzaHilmi/BookHaven.git
    ```
 
-2. **Run the Platform:**
+2. **Fill out the environtment variables**
+   - Copy `.env.example` file to `.env`
+   - Fill out the specified variable with your MySQL/MariaDB credential. ie,
+   ```shell
+   DB_USERNAME=john_doe
+   ...
+   ```
+
+3. **Run the Project:**
    - Open the newly clone project and run this command into your terminal to start the server
    ```shell
    php moo serve
    ```
    It'll run the web server on localhost port 8080
    - Access the platform through a web browser.
-
-3. **Explore and Contribute:**
-   - Explore the codebase to understand the structure.
-   - Contribute to the project by enhancing features or fixing bugs.
 
 ## License
 

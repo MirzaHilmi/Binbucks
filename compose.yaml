@@ -1,0 +1,32 @@
+services:
+  web:
+    build: .
+    restart: always
+    ports:
+      - "80:80" # HTTP
+      - "443:443" # HTTPS
+      - "443:443/udp" # HTTP/3
+    volumes:
+      - caddy_data:/data
+      - caddy_config:/config
+    networks:
+        - private
+
+  mariadb:
+    image: mariadb:lts-noble
+    restart: always
+    env_file: .env
+    environment:
+      MARIADB_RANDOM_ROOT_PASSWORD: 1
+      MARIADB_USER: ${DB_USERNAME}
+      MARIADB_PASSWORD: ${DB_PASSWORD}
+      MARIADB_DATABASE: ${DB_SCHEMA}
+    networks:
+        - private
+
+networks:
+  private:
+
+volumes:
+  caddy_data:
+  caddy_config:
